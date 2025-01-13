@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require('express')
 const mongoose = require('mongoose')
 const libraryRoute = require("./routes/library.route.js")
+const eventRoute = require("./routes/event.route.js")
 const app = express();
 
 // middleware
@@ -12,6 +13,7 @@ app.use(cors({ origin: true, credentials: true }))
 
 // routes
 app.use("/api/libraries", libraryRoute);
+app.use("/api/events", eventRoute);
 app.get("/", (req, res) => {res.send("Eyo")});
 
 mongoose.connect(process.env.MONGODB)
